@@ -58,9 +58,6 @@ public class PlayerController : MonoBehaviour {
         // Store the current horizontal input in the float moveHorizontal.
         float moveHorizontal = Input.GetAxis("Horizontal");
 
-        // Create a vector for horizontal movement
-        Vector2 horizontalMovement = new Vector2(moveHorizontal, 0) * run_speed;
-
         // Check if we're still facing right
         if (moveHorizontal != 0)
         {
