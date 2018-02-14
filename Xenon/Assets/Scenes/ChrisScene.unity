@@ -216,9 +216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c54e01eb193a0f4a92f98d30e6972ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  maxRange: 10
-  minRange: 3
 --- !u!50 &140189313
 Rigidbody2D:
   serializedVersion: 4
@@ -576,5 +573,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b363726faca1ae46bd968f4cd1e2a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  run_speed: 0.35
+  run_speed: 25
   jump_speed: 10
+  dash_speed: 0
