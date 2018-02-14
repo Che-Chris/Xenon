@@ -15,6 +15,6 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		float horizontal = Input.GetAxis ("Horizontal");
-		rb.AddForce(new Vector2()
+		//rb.AddForce(new Vector2()
 	}
 }
