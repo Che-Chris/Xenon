@@ -2,20 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
+public class EnemyAI : MonoBehaviour {
 
-	public Transform target = null;
+	public Transform target;
+	private Vector2 direction;
 
 	public int maxRange;
 	public int minRange;
-	public float runSpeed;
-
-	private Vector2 targetTran;
-	private Vector2 direction;
 
 	// Use this for initialization
 	void Start () {
-		
+		target = null;
 	}
 		
 	
@@ -25,11 +22,27 @@ public class Enemy : MonoBehaviour {
 			return;
 		}
 
-		transform.LookAt (target);
 		float distance = Vector2.Distance (transform.position, target.position);
 		bool tooClose = distance < minRange;
-		Vector2 direction = tooClose ? Vector2.right : Vector2.left;
 
-		transform.Translate (direction);
+		if (transform.position.x < target.position.x) {
+			direction = Vector2.right;
+		} else {
+			direction = Vector2.left;
+		}
+
+		transform.Translate (direction * Time.deltaTime);
+	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		if (other.tag == "Player") {
+			target = other.transform;
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D other) {
+		if (other.tag == "Player") {
+			target = null;
+		}
 	}
 }
