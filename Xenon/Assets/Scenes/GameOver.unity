@@ -162,6 +162,11 @@ Prefab:
       propertyPath: wait_secs
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114528638310030226, guid: 84f9f4741ce4a7042b77d608f5010685,
+        type: 2}
+      propertyPath: scene
+      value: main
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84f9f4741ce4a7042b77d608f5010685, type: 2}
   m_IsPrefabParent: 0
