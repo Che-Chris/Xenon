@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour {
 
 	public Transform target;
-	private Vector2 direction;
+    public SceneLoader sl;
+    private Vector2 direction;
 
 	public int maxRange;
 	public int minRange;
@@ -45,4 +46,12 @@ public class EnemyAI : MonoBehaviour {
 			target = null;
 		}
 	}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Player")
+        {
+            sl.LoadImmediate();
+        }
+    }
 }
