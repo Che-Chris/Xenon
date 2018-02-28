@@ -72,8 +72,12 @@ public class PlayerController : MonoBehaviour {
     {
         if (collision.transform.CompareTag("Ground"))
         {
-            this.jumps = 1;
-            this.dashes = 1;
+			ContactPoint2D contact = collision.contacts [0];
+			if(Vector3.Dot(contact.normal, Vector3.up) > 0.5)
+			{
+				this.jumps = 1;
+				this.dashes = 1;
+			}
         }
 
         rb.velocity = new Vector2(0, rb.velocity.y);
