@@ -450,9 +450,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b363726faca1ae46bd968f4cd1e2a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  run_speed: 20
-  jump_speed: 10
+  run_speed: 10
+  jump_speed: 20
   dash_speed: 10
+  maxHorizontalAirSpeed: 10
 --- !u!50 &1028606472
 Rigidbody2D:
   serializedVersion: 4
@@ -549,7 +550,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1028606470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.27, y: 2.23, z: 0}
+  m_LocalPosition: {x: 1.27, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -795,7 +796,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade52ff3e3ea1453bbcd8b705356f633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sl: {fileID: 1946693115}
 --- !u!61 &1212552742
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -954,7 +954,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1310248606}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.18, y: 2.41, z: -10}
+  m_LocalPosition: {x: 1.28, y: 1.62, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
