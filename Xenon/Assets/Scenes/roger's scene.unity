@@ -452,7 +452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   run_speed: 10
   jump_speed: 20
-  dash_speed: 10
+  dash_speed: 30
   maxHorizontalAirSpeed: 10
 --- !u!50 &1028606472
 Rigidbody2D:
@@ -472,7 +472,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &1028606473
 BoxCollider2D:

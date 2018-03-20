@@ -19,11 +19,13 @@ public class PlayerController : MonoBehaviour {
 	private float gravity;
 	private float defaultGravity;
 	private float groundedGravity;
+    private float movementLocked;
 
 	// Use this for initialization
 	void Start () {
         jumps = 0;
         dashes = 0;
+        movementLocked = 0.0f;
 		defaultGravity = 35f;
 		groundedGravity = 0.1f;
 		grounded = true;
@@ -36,23 +38,36 @@ public class PlayerController : MonoBehaviour {
     private void Update()
     {
 		gravity = grounded ? groundedGravity : defaultGravity;
+        if (movementLocked > 0.0f)
+        {
+            movementLocked -= Time.deltaTime;
+        }
+
+        else
+        {
+            rb.gravityScale = 5.0f;
+        }
 		
         // Player wants to jump
         bool jump = Input.GetKeyDown(KeyCode.Space);
 
-        // Check if player is allowed to jump
+        // Ground Jump
 		if (grounded && jump && jumps > 0) {
 			rb.AddForce (transform.up * jump_speed, ForceMode2D.Impulse);
-			// rb.AddForce (new Vector2 (0, 100) * jump_speed);
 			this.jumps -= 1;
-		} else if (touchingWallRight && jump) {
-			// rb.AddForce (new Vector2 (-10, 10), ForceMode2D.Impulse);
-			rb.velocity = new Vector2(-10, 10);
-			// facing_right = false;
-		} else if (touchingWallLeft && jump) {
+		}
+        // Wall Jump (Right)
+        else if (touchingWallRight && jump) {
+            rb.velocity = new Vector2(-10, 20);
+            movementLocked = .4f;
+            facing_right = false;
+        }
+        // Wall Jump (Left)
+        else if (touchingWallLeft && jump) {
 			// rb.AddForce (new Vector2 (10, 10), ForceMode2D.Impulse);
-			rb.velocity = new Vector2(10, 10);
-			// facing_right = true;
+			rb.velocity = new Vector2(10, 20);
+            movementLocked = .4f;
+			facing_right = true;
 		}
 
         // Player wants to dash
@@ -62,14 +77,16 @@ public class PlayerController : MonoBehaviour {
         if (dash && dashes > 0)
         {
             // check if we dash left or right
-            var move = new Vector2(100, 0);
+            var move = new Vector2(1, 0);
 
             if (!facing_right)
             {
                 move *= -1;
             }
 
-            rb.AddForce(move * dash_speed);
+            rb.velocity = (move * dash_speed);
+            rb.gravityScale = 0.0f;
+            movementLocked = .25f;
         }
     }
 
@@ -79,47 +96,18 @@ public class PlayerController : MonoBehaviour {
         // Store the current horizontal input in the float moveHorizontal.
         float moveHorizontal = Input.GetAxis("Horizontal");
 
-        // Check if we're still facing right
-        if (moveHorizontal != 0)
+        // Check if movement is locked
+        if (movementLocked <= 0.0f)
         {
-            facing_right = moveHorizontal > 0 ? true : false;
+            // Check if we're still facing right
+            if (moveHorizontal != 0)
+            {
+                facing_right = moveHorizontal > 0 ? true : false;
+            }
+
+            // Update movement
+            rb.velocity = new Vector2(moveHorizontal * run_speed, rb.velocity.y);
         }
-
-		if (!grounded && facing_right && rb.velocity.x > 0) {
-			rb.velocity = new Vector2 (0, rb.velocity.y);
-		} else if (!grounded && !facing_right && rb.velocity.x < 0) {
-			rb.velocity = new Vector2 (0, rb.velocity.y);
-		}
-
-		if (grounded && facing_right && !touchingWallRight && moveHorizontal != 0) {
-			rb.velocity = new Vector2 (run_speed, rb.velocity.y);
-		} else if (grounded && !facing_right && !touchingWallLeft && moveHorizontal != 0) {
-			rb.velocity = new Vector2 (-run_speed, rb.velocity.y);
-		} else if (!grounded && facing_right && !touchingWallRight && moveHorizontal != 0) {
-			if (Mathf.Abs (rb.velocity.x) < maxHorizontalAirSpeed) {
-				rb.AddForce (new Vector2 (run_speed, 0), ForceMode2D.Impulse);
-			}
-		} else if (!grounded && !facing_right && !touchingWallLeft && moveHorizontal != 0) {
-			if (Mathf.Abs (rb.velocity.x) < maxHorizontalAirSpeed) {
-				rb.AddForce (new Vector2 (-run_speed, 0), ForceMode2D.Impulse);
-			}
-		}
-			
-		/*
-        // Add movement
-		if (grounded) {
-			rb.velocity = new Vector2 (moveHorizontal * run_speed, rb.velocity.y);
-		} /*else if (!grounded && facing_right && touchingWallLeft) {
-			rb.velocity = new Vector2 (moveHorizontal * run_speed, rb.velocity.y);
-		} else if (!grounded && !facing_right && touchingWallRight) {
-			rb.velocity = new Vector2 (moveHorizontal * run_speed, rb.velocity.y);
-		} else if (!grounded && facing_right && !touchingWallRight) {
-			rb.velocity = new Vector2 (moveHorizontal * run_speed, rb.velocity.y);
-		} else if (!grounded && !facing_right && !touchingWallLeft) {
-			rb.velocity = new Vector2 (moveHorizontal * run_speed, rb.velocity.y);
-		}*/
-
-		// rb.AddForce(-transform.up * gravity); //apply gravity
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
