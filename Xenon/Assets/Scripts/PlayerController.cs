@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour {
 	public float run_speed;
     public float jump_speed;
     public float dash_speed;
-	public float maxHorizontalAirSpeed;
 
     private int jumps;
     private int dashes;
@@ -16,9 +15,6 @@ public class PlayerController : MonoBehaviour {
 	private bool touchingWallRight;
 	private bool touchingWallLeft;
     private bool facing_right;
-	private float gravity;
-	private float defaultGravity;
-	private float groundedGravity;
     private float movementLocked;
 
 	// Use this for initialization
@@ -26,8 +22,6 @@ public class PlayerController : MonoBehaviour {
         jumps = 0;
         dashes = 0;
         movementLocked = 0.0f;
-		defaultGravity = 35f;
-		groundedGravity = 0.1f;
 		grounded = true;
 		touchingWallRight = false;
 		touchingWallLeft = false;
@@ -37,7 +31,6 @@ public class PlayerController : MonoBehaviour {
 
     private void Update()
     {
-		gravity = grounded ? groundedGravity : defaultGravity;
         if (movementLocked > 0.0f)
         {
             movementLocked -= Time.deltaTime;
