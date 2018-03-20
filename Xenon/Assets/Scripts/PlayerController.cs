@@ -119,7 +119,8 @@ public class PlayerController : MonoBehaviour {
 				this.jumps = 1;
 				this.dashes = 1;
 			}
-		} else if (collision.transform.CompareTag ("Wall") && !grounded) {
+		} 
+		if (collision.transform.CompareTag ("Wall")) {
 			if (Vector3.Dot (contact.normal, Vector3.left) > 0.5) {
 				touchingWallRight = true;
 			} else if (Vector3.Dot (contact.normal, Vector3.right) > 0.5) {
