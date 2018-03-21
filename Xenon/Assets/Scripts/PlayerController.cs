@@ -121,6 +121,10 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
+		if (collision.transform.CompareTag ("Invisible Wall")) {
+			Physics2D.IgnoreCollision (collision.collider, this.GetComponent<BoxCollider2D> ());
+		}
+
         // rb.velocity = new Vector2(0, rb.velocity.y);
     }
 
