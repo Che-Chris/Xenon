@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
 		ContactPoint2D contact = collision.contacts [0];
 		if (collision.transform.CompareTag ("Ground")) {
@@ -111,8 +111,9 @@ public class PlayerController : MonoBehaviour {
 				grounded = true;
 				this.jumps = 1;
 				this.dashes = 1;
-			}
-		} 
+            }
+		}
+        
 		if (collision.transform.CompareTag ("Wall")) {
 			if (Vector3.Dot (contact.normal, Vector3.left) > 0.5) {
 				touchingWallRight = true;
