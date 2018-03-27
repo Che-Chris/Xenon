@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour {
         // Player wants to jump
         bool jump = Input.GetKeyDown(KeyCode.Space);
 
-        if (jumps > 0 && (grounded || touchingWallLeft || touchingWallRight))
+        if (jump && (grounded || touchingWallLeft || touchingWallRight))
         {
             rb.gravityScale = 5.0f;
         }
