@@ -7,12 +7,9 @@ public class EnemyAI : MonoBehaviour {
 	private Vector2 direction;
 	private int point;
 	private bool chasing;
-	// private float start;
-	// private float end;
 
 	private Transform target;
 	public Transform[] points;
-	//public Transform end;
 
 	// Use this for initialization
 	void Start () {
@@ -24,8 +21,6 @@ public class EnemyAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float distance = Vector2.Distance (transform.position, target.position);
-
 		if (transform.position.x < target.position.x) {
 			direction = Vector2.right;
 		} else {

@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour {
 	private bool touchingWallLeft;
     private bool facing_right;
     private float movementLocked;
+	private SpriteRenderer sr;
+	private Animator animator;
 
 	// Use this for initialization
 	void Start () {
@@ -27,10 +29,14 @@ public class PlayerController : MonoBehaviour {
 		touchingWallLeft = false;
         rb = GetComponent<Rigidbody2D>();
         facing_right = true;
+		sr = GetComponent<SpriteRenderer> ();
+		animator = GetComponent<Animator> ();
     }
 
     private void Update()
     {
+		float moveHorizontal = Input.GetAxis("Horizontal");
+
         if (movementLocked > 0.0f)
         {
             movementLocked -= Time.deltaTime;
@@ -52,15 +58,16 @@ public class PlayerController : MonoBehaviour {
         // Wall Jump (Right)
         else if (touchingWallRight && jump) {
             rb.velocity = new Vector2(-10, 20);
-            movementLocked = .4f;
-            facing_right = false;
+			sr.flipX = !sr.flipX;
+			movementLocked = .4f;
+			animator.SetBool ("wall_jumping", true);
         }
         // Wall Jump (Left)
         else if (touchingWallLeft && jump) {
-			// rb.AddForce (new Vector2 (10, 10), ForceMode2D.Impulse);
 			rb.velocity = new Vector2(10, 20);
-            movementLocked = .4f;
-			facing_right = true;
+			sr.flipX = !sr.flipX;
+			movementLocked = .4f;
+			animator.SetBool ("wall_jumping", true);
 		}
 
         // Player wants to dash
@@ -81,6 +88,15 @@ public class PlayerController : MonoBehaviour {
             rb.gravityScale = 0.0f;
             movementLocked = .25f;
         }
+
+		bool flipSprite = (sr.flipX ? (moveHorizontal > 0f) : (moveHorizontal < 0f));
+
+		if (flipSprite)
+		{
+			sr.flipX = !sr.flipX;
+		}
+		animator.SetBool ("grounded", grounded);
+		animator.SetBool ("running", Mathf.Abs (moveHorizontal) > 0);
     }
 
     // Update is called once per frame
@@ -100,7 +116,17 @@ public class PlayerController : MonoBehaviour {
 
             // Update movement
             rb.velocity = new Vector2(moveHorizontal * run_speed, rb.velocity.y);
+			animator.SetBool ("wall_jumping", false);
         }
+
+		bool flipSprite = (sr.flipX ? (moveHorizontal > 0f) : (moveHorizontal < 0f));
+
+		if (flipSprite)
+		{
+			sr.flipX = !sr.flipX;
+		}
+		animator.SetBool ("grounded", grounded);
+		animator.SetBool ("running", Mathf.Abs (moveHorizontal) > 0);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
