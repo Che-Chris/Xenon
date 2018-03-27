@@ -481,7 +481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   run_speed: 10
   jump_speed: 20
-  dash_speed: 30
+  dash_speed: 20
 --- !u!50 &1028606472
 Rigidbody2D:
   serializedVersion: 4
@@ -806,7 +806,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1152056552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.37, y: 3.54, z: 0}
+  m_LocalPosition: {x: 28.03, y: 0.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1054,11 +1054,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4053647266582938, guid: 0cd50660e5c2c5741a7b0f6fbdd3076c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 20.84
+      value: 20.5
       objectReference: {fileID: 0}
     - target: {fileID: 4053647266582938, guid: 0cd50660e5c2c5741a7b0f6fbdd3076c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.09
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4053647266582938, guid: 0cd50660e5c2c5741a7b0f6fbdd3076c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1155,11 +1155,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4053647266582938, guid: 0cd50660e5c2c5741a7b0f6fbdd3076c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 30.421
+      value: 30.66
       objectReference: {fileID: 0}
     - target: {fileID: 4053647266582938, guid: 0cd50660e5c2c5741a7b0f6fbdd3076c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.46
+      value: 2.51
       objectReference: {fileID: 0}
     - target: {fileID: 4053647266582938, guid: 0cd50660e5c2c5741a7b0f6fbdd3076c, type: 2}
       propertyPath: m_LocalPosition.z

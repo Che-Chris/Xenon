@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour {
             rb.velocity = (move * dash_speed);
             rb.gravityScale = 0.0f;
             movementLocked = .25f;
+            this.dashes -= 1;
         }
     }
 
