@@ -50,6 +50,11 @@ public class PlayerController : MonoBehaviour {
         // Player wants to jump
         bool jump = Input.GetKeyDown(KeyCode.Space);
 
+        if (jumps > 0 && (grounded || touchingWallLeft || touchingWallRight))
+        {
+            rb.gravityScale = 5.0f;
+        }
+
         // Ground Jump
 		if (grounded && jump && jumps > 0) {
 			rb.AddForce (transform.up * jump_speed, ForceMode2D.Impulse);
@@ -97,14 +102,14 @@ public class PlayerController : MonoBehaviour {
         // Store the current horizontal input in the float moveHorizontal.
         float moveHorizontal = Input.GetAxis("Horizontal");
 
+        facing_right = moveHorizontal > 0 ? true : false;
+
         // Check if movement is locked
         if (movementLocked <= 0.0f)
         {
             // Check if we're still facing right
             if (moveHorizontal != 0)
             {
-                facing_right = moveHorizontal > 0 ? true : false;
-
 				bool flipSprite = (sr.flipX ? facing_right : !facing_right);
 
 				if (flipSprite)
