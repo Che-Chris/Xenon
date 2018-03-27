@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour {
         if (dash && dashes > 0)
         {
             // check if we dash left or right
-            var move = new Vector2(1, 0);
+			var move = Vector2.right;
 
             if (!facing_right)
             {
@@ -88,15 +88,6 @@ public class PlayerController : MonoBehaviour {
             rb.gravityScale = 0.0f;
             movementLocked = .25f;
         }
-
-		bool flipSprite = (sr.flipX ? (moveHorizontal > 0f) : (moveHorizontal < 0f));
-
-		if (flipSprite)
-		{
-			sr.flipX = !sr.flipX;
-		}
-		animator.SetBool ("grounded", grounded);
-		animator.SetBool ("running", Mathf.Abs (moveHorizontal) > 0);
     }
 
     // Update is called once per frame
@@ -112,19 +103,20 @@ public class PlayerController : MonoBehaviour {
             if (moveHorizontal != 0)
             {
                 facing_right = moveHorizontal > 0 ? true : false;
+
+				bool flipSprite = (sr.flipX ? facing_right : !facing_right);
+
+				if (flipSprite)
+				{
+					sr.flipX = !sr.flipX;
+				}
             }
 
             // Update movement
             rb.velocity = new Vector2(moveHorizontal * run_speed, rb.velocity.y);
 			animator.SetBool ("wall_jumping", false);
         }
-
-		bool flipSprite = (sr.flipX ? (moveHorizontal > 0f) : (moveHorizontal < 0f));
-
-		if (flipSprite)
-		{
-			sr.flipX = !sr.flipX;
-		}
+			
 		animator.SetBool ("grounded", grounded);
 		animator.SetBool ("running", Mathf.Abs (moveHorizontal) > 0);
     }
