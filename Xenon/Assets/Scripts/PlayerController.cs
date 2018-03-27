@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
     private float movementLocked;
 	private SpriteRenderer sr;
 	private Animator animator;
+	private SceneLoader sl;
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +32,8 @@ public class PlayerController : MonoBehaviour {
         facing_right = true;
 		sr = GetComponent<SpriteRenderer> ();
 		animator = GetComponent<Animator> ();
+		sl = GetComponent<SceneLoader> ();
+
     }
 
     private void Update()
@@ -143,6 +146,11 @@ public class PlayerController : MonoBehaviour {
 
 		if (collision.transform.CompareTag ("Invisible Wall")) {
 			Physics2D.IgnoreCollision (collision.collider, this.GetComponent<BoxCollider2D> ());
+		}
+
+		if (collision.transform.CompareTag ("Enemy")) {
+			Debug.Log ("collided");
+			sl.LoadImmediate ();
 		}
 
         // rb.velocity = new Vector2(0, rb.velocity.y);
