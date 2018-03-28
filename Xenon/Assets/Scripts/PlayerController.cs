@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour {
         bool dash = Input.GetKeyDown(KeyCode.LeftShift);
 
         // Check if the player is allowed to dash
-        if (dash && dashes > 0)
+        if (dash && dashes > 0 && moveHorizontal != 0)
         {
             // check if we dash left or right
 			var move = Vector2.right;
@@ -171,6 +171,7 @@ public class PlayerController : MonoBehaviour {
             this.seeds += 1;
             if (seeds >= 4)
             {
+                sl.scene = "LevelComplete";
                 sl.LoadImmediate();
             }
         }
