@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
 	private SpriteRenderer sr;
 	private Animator animator;
 	private SceneLoader sl;
+    private int seeds;
 
 	// Use this for initialization
 	void Start () {
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour {
 		sr = GetComponent<SpriteRenderer> ();
 		animator = GetComponent<Animator> ();
 		sl = GetComponent<SceneLoader> ();
+        seeds = 0;
 
     }
 
@@ -161,7 +163,20 @@ public class PlayerController : MonoBehaviour {
         // rb.velocity = new Vector2(0, rb.velocity.y);
     }
 
-	private void OnCollisionExit2D(Collision2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.tag == "Seed")
+        {
+            Destroy(collision.gameObject);
+            this.seeds += 1;
+            if (seeds >= 4)
+            {
+                sl.LoadImmediate();
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision) {
 		if (collision.transform.CompareTag ("Ground")) {
 			grounded = false;
 		} else if (collision.transform.CompareTag ("Wall")) {

@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Main Menu.unity
+    path: Assets/Scenes/MainMenu.unity
     guid: b37f8c62bc6e17544a5d04523b094698
   - enabled: 1
-    path: Assets/main.unity
+    path: Assets/Scenes/main.unity
     guid: 0ed2de68f11a9ee4ebdbc67e53152598
+  - enabled: 1
+    path: Assets/Scenes/roger's scene.unity
+    guid: ae2460dfabd5886449a0f84a58bb2c40
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 7d12ca29a7306bb45a6633bcb2cd4928
