@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour {
     void FixedUpdate ()
     {
         // Store the current horizontal input in the float moveHorizontal.
-        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveHorizontal = Input.GetAxisRaw("Horizontal");
 
         facing_right = moveHorizontal > 0 ? true : false;
 
