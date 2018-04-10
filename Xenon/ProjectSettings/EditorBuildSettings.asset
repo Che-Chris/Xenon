@@ -8,8 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: b37f8c62bc6e17544a5d04523b094698
-  - enabled: 1
-    path: Assets/Scenes/main.unity
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/0ed2de68f11a9ee4ebdbc67e53152598
     guid: 0ed2de68f11a9ee4ebdbc67e53152598
   - enabled: 1
     path: Assets/Scenes/roger's scene.unity
