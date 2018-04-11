@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
@@ -7,6 +8,7 @@ public class PlayerController : MonoBehaviour {
 	public float run_speed;
     public float jump_speed;
     public float dash_speed;
+	public SeedUIController seedUI = null;
 
     private int jumps;
     private int dashes;
@@ -169,6 +171,9 @@ public class PlayerController : MonoBehaviour {
         {
             Destroy(collision.gameObject);
             this.seeds += 1;
+			if (seedUI != null) {
+				seedUI.pushSeed (collision.GetComponent<SpriteRenderer> ().sprite);
+			}
             if (seeds >= 4)
             {
                 sl.scene = "LevelComplete";
