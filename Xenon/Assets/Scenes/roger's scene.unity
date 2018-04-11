@@ -3224,6 +3224,7 @@ MonoBehaviour:
   run_speed: 10
   jump_speed: 22
   dash_speed: 20
+  seedUI: {fileID: 1109291747}
 --- !u!50 &1028606472
 Rigidbody2D:
   serializedVersion: 4
@@ -3614,6 +3615,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1109291746}
+  - component: {fileID: 1109291747}
   m_Layer: 5
   m_Name: Seed Grid
   m_TagString: Untagged
@@ -3643,6 +3645,17 @@ RectTransform:
   m_AnchoredPosition: {x: -200, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1109291747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1109291745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c7598a089fcd444c89687bca5769437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1152056552
 GameObject:
   m_ObjectHideFlags: 0
