@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b0e1cfcfde2523478e7d82933bfa6e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: Main
+  scene: roger's scene
   loadOnStart: 0
 --- !u!1 &76504750
 GameObject:
