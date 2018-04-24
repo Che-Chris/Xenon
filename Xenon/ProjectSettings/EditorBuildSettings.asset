@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: b37f8c62bc6e17544a5d04523b094698
   - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/0ed2de68f11a9ee4ebdbc67e53152598
+    path: Assets/Scenes/main.unity
     guid: 0ed2de68f11a9ee4ebdbc67e53152598
   - enabled: 1
     path: Assets/Scenes/roger's scene.unity
@@ -20,3 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelComplete.unity
     guid: 6550d8e7a7d98cc4e879ead123b585df
+  - enabled: 1
+    path: Assets/Scenes/PreLevel Dialogue.unity
+    guid: b200dd1fcacbe354e8ab4220c1ab211a
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: c703c9725ad8fe847a40a2fc1b06aa00
+  - enabled: 1
+    path: Assets/Scenes/PostLevel Dialogue.unity
+    guid: 700c83485dd240a44aad093c4875104f
